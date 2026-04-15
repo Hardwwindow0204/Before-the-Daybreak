@@ -31,6 +31,7 @@ const scenes = {
             "Then, a minute later, you heard a gunshot...",
             "Surprisingly, you seemed to be the only one who had heard it. ",
             "Everyone else kept playing as usual, as if nothing had happened.",
+            "Only Will, a guy looked at you",
             "You decided to..."
         ],
         choices: [
@@ -106,7 +107,13 @@ const scenes = {
         ],
         choices: [
             { text: "Hide", next: "ch1_c4" },
-            { text: "Run", next: "ch_2" }
+            {
+                text: "Run",
+                outcomes: [
+                    { chance: 0.2, next: "e_1" },
+                    {chance:0.8, next:"ch_2"}
+                ]
+            }
         ]
     },
     ch1_c3_2: {
@@ -151,13 +158,13 @@ const scenes = {
         ],
         choices: [
             {
-                text: "duck behind the bleachers", next: "ch1_c5_1"
+                text: "Duck behind the bleachers", next: "ch1_c5_1"
             },
             {
-                text: "slip into a corner", next: "ch1_c5_2"
+                text: "Slip into a corner", next: "ch1_c5_2"
             },
             {
-                text: "  climb up to the ventilation room", next: "ch1_c5_3"
+                text: "  Climb up to the ventilation room", next: "ch1_c5_3"
             }
         ]
     },
@@ -313,7 +320,7 @@ const scenes = {
         ],
         choices: [
             { text: "Get out", next: "ch_2" },
-            { text: "Stay", next: "ch1_c6_c" }
+            
         ]
     },
 
@@ -324,14 +331,132 @@ const scenes = {
         subtitle: "",
         caption: "",
         hint: "",
+        image: "images/chapters/corridor.png",
+        text: [
+            `You had made it out of the gym alive.
+
+But the danger was far from over..`
+        ],
+        choices: [
+            {text:"continue",next:"ch2_c1"}
+        ]
+    },
+    ch2_c1: {
+        type: "content",
+        label: "Chapter II",
+        title: "",
+        subtitle: "",
+        caption: "",
+        hint: "",
+        image: "",
+        text: [
+            `You had escaped death and stepped out of the gym.
+
+            You found yourself in a corridor.
+            To your left, the floor was smeared with blood and marked by footprints.
+            That way led toward the backyard and the library.
+
+            To your right, the floor was cleaner.
+            That path led to the academic building and the front entrance-the nearest way out of the school.
+
+            "Go left!" said Cozy, one of the girls, already moving that way.
+
+            "Wait," Will said. "We need to get out of here as fast as possible."
+
+            In the chaos, you decided to:`
+        ],
+        choices: [
+            { text: "Go right", next: "ch2_c2_1" },
+            { text: "Go left", next: "ch2_c2_2" }
+           
+        ]
+    },
+
+    ch2_c2_1: {
+        type: "content",
+        label: "Chapter II",
+        title: "",
+        subtitle: "",
+        caption: "",
+        hint: "",
+        image: "",
+        text: [
+            `You chose the corridor on the right.
+
+        You ran as fast as you could, following it until you reached the academic building.
+
+        As you kept going, you spotted a staircase on your right leading to the upper floors.
+
+        Would you:`
+        ],
+        choices: [
+            { text: "Turn and go up", next: "ch2_c3_2" },
+            {text:"Keep going", next:"ch2_c3_1"}
+        ]
+    },
+    ch2_c2_2: {
+        type: "content",
+        label: "Chapter II",
+        title: "",
+        subtitle: "",
+        caption: "",
+        hint: "",
+        image: "",
+        text: [
+        `Somehow, you chose the corridor on the left, ignoring the bloodstains.
+
+        Moving quickly along the corridor, you left the gym and stepped into the backyard of Clinton.
+
+        The yard lay between the library and the gym, behind the academic building.
+
+        Beyond it stood a deserted garden...
+
+        You decided to:`
+        ],
+        choices: [
+            { text: "Go to the garden", next: "ch_4" },
+            { text: "Stay in the yard", next: "e_1" },
+            {text:"Go to the library",next:"ch_3"}
+        ]
+    
+    },
+    ch2_c3_1: {
+        type: "content",
+        label: "Chapter II",
+        title: "",
+        subtitle: "",
+        caption: "",
+        hint: "",
         image: "",
         text: [
 
         ],
         choices: [
-
+            {text:"Run back"}
         ]
     },
+    ch2_c3_2: {
+        type: "content",
+        label: "Chapter II",
+        title: "",
+        subtitle: "",
+        caption: "",
+        hint: "",
+        image: "",
+        text: [
+
+        ],
+        choices: [
+            { text: "Walk conterclockwise", next: "ch2_c4_1" },
+            { text: "Walk clockwise", next: "ch2_c4_2" }
+        ]
+
+    },
+
+
+
+
+
 
     e_1: {
         type: "ending",
@@ -346,7 +471,7 @@ const scenes = {
 
             Probably-most likely-you were dead.
 
-            -- ----
+            --  ----
             `
         ],
         choices: [
