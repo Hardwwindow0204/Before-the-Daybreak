@@ -50,12 +50,19 @@ const scenes = {
         image: "",
         text: [`
                 "Will, did you hear that ?"
+
                 "Hear what ?" Will glanced at you. "I didn't hear anything strange."
+
                 Did I mishear it ? you wondered.
+
                 "No. I'm serious. That was a gunshot."
+
                 Will did not reply. The look on his face made it clear he did not believe you.
+
                 For a moment, even you started to doubt yourself.
+
                 Then the sound came again.
+
                 Bang. Bang. Bang.`
 
         ],
@@ -106,16 +113,17 @@ const scenes = {
 
         ],
         choices: [
-            { text: "Hide", next: "ch1_c4" },
+            { text: "Hide", next: "ch1_c4_1" },
             {
                 text: "Run",
                 outcomes: [
-                    { chance: 0.2, next: "e_1" },
-                    {chance:0.8, next:"ch_2"}
+                    { chance: 0.2, next: "ch1_c4_2" },
+                    { chance: 0.8, next: "ch_2" }
                 ]
             }
         ]
     },
+
     ch1_c3_2: {
         type: "content",
         label: "Chapter I",
@@ -140,7 +148,7 @@ const scenes = {
             { text: "Stand up and fight", next: "e_1" }
         ]
     },
-    ch1_c4: {
+    ch1_c4_1: {
         type: "content",
         label: "Chapter I",
         title: "",
@@ -166,6 +174,20 @@ const scenes = {
             {
                 text: "  Climb up to the ventilation room", next: "ch1_c5_3"
             }
+        ]
+    },
+    ch1_c4_2: {
+        type: "content",
+        label: "Chapter I",
+        text: [
+            `You opened the gym door and stepped outside.
+
+            The moment the door swung open, you found yourself face to face with an armed man.
+
+            He lifted his gun...`
+        ],
+        choices: [
+            {text:"Continue", next:"e_1"}
         ]
     },
     ch1_c5_1: {
@@ -334,8 +356,7 @@ const scenes = {
         image: "images/chapters/corridor.png",
         text: [
             `You had made it out of the gym alive.
-
-But the danger was far from over..`
+             But the danger was far from over..`
         ],
         choices: [
             {text:"continue",next:"ch2_c1"}
@@ -387,13 +408,14 @@ But the danger was far from over..`
 
         As you kept going, you spotted a staircase on your right leading to the upper floors.
 
-        Would you:`
+        You would:`
         ],
         choices: [
             { text: "Turn and go up", next: "ch2_c3_2" },
             {text:"Keep going", next:"ch2_c3_1"}
         ]
     },
+    
     ch2_c2_2: {
         type: "content",
         label: "Chapter II",
@@ -415,7 +437,7 @@ But the danger was far from over..`
         ],
         choices: [
             { text: "Go to the garden", next: "ch_4" },
-            { text: "Stay in the yard", next: "e_1" },
+            { text: "Stay in the yard", next: "ch2_c3_4" },
             {text:"Go to the library",next:"ch_3"}
         ]
     
@@ -429,10 +451,26 @@ But the danger was far from over..`
         hint: "",
         image: "",
         text: [
+            `You kept moving along the first floor. After all, it was the fastest route to the front door-the quickest way out of this hell.
 
+            When you reached the end of the corridor, you peered around the corner.
+
+            Three huge men were standing farther down the hall, talking about something.
+
+            Only one of them was facing your direction. The others had their backs to you.
+
+            At that moment, you decided to:`
         ],
         choices: [
-            {text:"Run back"}
+            { text: "Turn back and Run", next: "ch2_c4_1" },
+            {
+                text: "Sneak forward",
+                outcomes: [
+                    { chance: 0.1, next: "ch2_c4_2" },
+                    { chance: 0.9, next: "ch2_c4_3" }
+                ]
+            }
+
         ]
     },
     ch2_c3_2: {
@@ -444,24 +482,256 @@ But the danger was far from over..`
         hint: "",
         image: "",
         text: [
+            `You climbed the staircase to the second floor.
 
+            You found yourself in the corridor again, but this time it was swallowed by darkness.
+
+            The choking smell of gunpowder and rust filled the air, making it even harder to breathe.
+
+            You could barely make out the walls, the windows, and the classroom doors.
+
+            There was nothing else in the hallway.
+
+            When you looked back, you realized that only Cozy had followed you.
+
+            Now the two of you were trapped on the dark second floor, with no idea where to go.
+
+            Following Cozy, the two of you began to move quietly...`
         ],
         choices: [
-            { text: "Walk conterclockwise", next: "ch2_c4_1" },
-            { text: "Walk clockwise", next: "ch2_c4_2" }
+            { text: "Go conterclockwise", next: "ch2_c4_4" },
+            { text: "Go clockwise", next: "ch2_c4_5" }
         ]
 
     },
+    ch2_c3_4: {
+        type: "content",
+        label: "Chapter II",
+        text: [
+            `You stayed in the yard, hoping the armed men would simply disappear.
+
+            But the world did not work that way.
+
+            Three armed men were walking toward the library when they spotted you in the dim light.
+
+            Then came the gunshot...`
+        ],
+        choices: [
+            {text:"Continue", next:"e_1"}
+        ]
+    },
+    ch2_c4_1: {
+        type: "content",
+        label:"Chapter II",
+        text: [
+            `Running back from the dangerous front entrance, you passed the staircase again.
+
+            You hesitated.
+
+            The armed men had already noticed you and were probably coming after you. But the second floor was a complete unknown.
+
+            You decided to:`
+        ],
+        choices: [
+            { text: "Stay on the first floor", next: "ch2_c3_3" },
+            { text: "Go up to the second floor", next: "ch2_c3_2" }
+        ]
+    },
 
 
+    ch2_c4_2: {
+        type: "content",
+        label: "Chapter II",
+        title: "",
+        subtitle: "",
+        caption: "",
+        hint: "",
+        image: "",
+        text: [
+            `You crept forward quietly, trying not to make a single sound.
 
+            You even held your breath, afraid they might hear you.
 
+            Somehow, you made it.
+
+            You had slipped through the most dangerous place of all, and no one had noticed.
+
+            Then you ran for the front gate and saw police cars surrounding the entire school.
+
+            At last, you were...`
+        ],
+        choices: [
+            { text: "Continue", next: "e_2" }
+        ]
+    },
+    ch2_c4_3: {
+        type: "content",
+        label: "Chapter II",
+        title: "",
+        subtitle: "",
+        caption: "",
+        hint: "",
+        image: "",
+        text: [
+            `You crept forward quietly, trying not to make a single sound.
+
+            You even held your breath, afraid they might hear you.
+
+            But getting past them was almost impossible.
+
+            They noticed you.
+
+            Then they turned and started coming toward you...`
+        ],
+        choices: [
+            { text: "Continue", next: "e_1" }
+        ]
+    },
+    ch2_c4_4: {
+        type: "content",
+        label: "chapter II",
+        text: [
+            `You kept walking.
+
+            Suddenly, you saw a flashlight at the far end of the corridor.
+
+            Heavy footsteps, breaking doors, and furniture crashing against the floor shattered the silence.
+
+            You watched as the man moved past each classroom. He kicked the doors open, swept his light inside, and sprayed the rooms with bullets.
+
+            Faint screams came from several of them.
+
+            He was getting closer, and you and Cozy were stuck in the middle of the corridor.
+
+            You decided to`
+        ],
+        choices: [
+            { text: "Hide in a nearby classroom", next: "ch2_c5_1" },
+            {
+                text: "Turn around and run away",
+                outcomes: [
+                    { chance: 0.5, next: "ch2_c4_5" },
+                    { chance: 0.5, next: "ch2_c5_2" }
+                ]
+            }
+        ]
+    },
+    ch2_c5_1: {
+        type: "content",
+        label: "Chapter II",
+        text: [
+            `You entered the classroom. No one was there.
+
+            It was completely empty-no students, no teacher, not even a body.
+
+            The desks and chairs were in disarray.
+
+            At the front of the room, you could barely make out something written on the whiteboard. At the back, there was something on the shelf.`
+        ],
+        choices: [
+            { text: "Check the whiteboard", next: "ch2_c6_1" },
+            { text: "Look at the back shelf", next: "ch2_c6_3" },
+            {text:"Hide behind desks and chairs",next:"ch2_c7_1"}
+        ]
+    },
+    ch2_c5_2: {
+        type: "content",
+        label: "Chapter II",
+        text: [
+            `You turned and ran.
+
+            But you were too late. 
+            
+            He had already seen the two of you.`
+
+        ],
+        choices: [
+            {
+                text: "Continue",
+                outcomes: [
+                    { chance: 0.9, next: "e_1" },
+                    { chance: 0.1, next: "ch2_c6_2" }
+
+                ]
+            }
+        ]
+
+        
+    },
+    ch2_c6_1: {
+        type: "content",
+        label: "Chapter II",
+        image: "images/contents/kenbont.png",
+        title: "",
+        subtitle: "",
+        caption: "",
+        hint: "",
+        text: [
+            `Near the whiteboard, you could finally read the words clearly.
+
+            "Kenbont Far," Cozy read aloud.
+
+            You saw her react at once. Her body tensed, and she nearly collapsed.
+
+            "Are you okay?" you asked.
+
+            She sat down and looked up at you, her face pale.
+
+            She nodded. "Yes. I'm all right."
+
+            "I read about it once," she said. "The book said Kenbont was the most dangerous terrorist group on Earth."
+
+            Terrorists?
+
+            --------------------------------------------------
+            
+            The footsteps were getting louder and closer. You knew the armed man was almost here.
+
+            You decided to:
+            `
+        ],
+        choices: [
+            { text: "Hide in the middle, behind desks and chairs", next: "ch2_c7_1" },
+            { text: "Hide near the door, in the corner", next: "ch2_c7_2" },
+            { text: "Hide under windows, away from the corridor", next: "ch2_c7_3" }
+                    ]
+            
+        
+
+    },
+
+    ch2_c6_2: {
+        type: "content",
+        label: "Chapter II",
+        text: [
+            `You thought you were dead.
+
+            Honestly, so did I.
+
+            But somehow, you survived.
+
+            Cozy had been shot in the arm, and your right foot was in terrible shape. 
+            Luckily, neither wound was fatal.`
+        ],
+        choices: [
+            { text: "Continue", next: "ch2_c4_5" }
+        ]
+    },
+    ch2_c6_3: {
+        type: "content",
+        label: "Chapter II",
+        text: [
+            ``
+        ]
+
+    },
+    
 
 
     e_1: {
         type: "ending",
         label: "Ending No.1",
-        title: "THE END",
+        title: "Daybreak Never Came",
         subtitle: "",
         caption: "",
         hint: "Before the Daybreak: Escape from Clinton",
@@ -471,17 +741,46 @@ But the danger was far from over..`
 
             Probably-most likely-you were dead.
 
-            --  ----
+            ---- THE END --
             `
         ],
         choices: [
             { text: "Restart", next:"ch_1"}
+        ]
+    },
+    e_2: {
+        type: "ending",
+        label: "Ending No.2",
+        title: "Safe for Now",
+        subtitle: "",
+        caption: "",
+        hint: "Before the Daybreak: Escape from Clinton",
+        image: "images/endings/e_2.png",
+        text: [
+            `Eventually, you saw the streetlights beyond the school.
+
+            Someone grabbed your arm and helped you over the high wall.
+
+            You looked up at the sky. The darkness was beginning to fade.
+
+            For the first time, you realized how beautiful the world was.
+
+            And now, it was the hour before daybreak.
+
+            ---- THE END --
+            `
+        ],
+        choices: [
+            { text: "Restart", next: "ch_1" }
         ]
     }
 };
 
 function showScene(sceneId) {
     const scene = scenes[sceneId];
+
+    const container = document.getElementById("game-container");
+    container.className = "game-container " + scene.type;
 
     document.getElementById("scene-label").innerText = scene.label || "";
     document.getElementById("scene-title").innerText = scene.title || "";
